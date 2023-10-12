@@ -1,8 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	router "github.com/yuha-yuha/2023KosenFes_KosenGo_Backend.git/controller"
+)
 
 func main() {
-	r := gin.Default()
+	r := router.Get()
 	r.Run()
 }
