@@ -1,7 +1,36 @@
 package model
 
+import (
+	"errors"
+	"os"
+
+	"github.com/jszwec/csvutil"
+)
+
 type Quize struct {
-	id      int
-	content string
-	answer  string
+	Id      int    `csv:"id" json:"id"`
+	Content string `csv:"que" json:"que"`
+	Answer  string `csv:"ans" json:"ans"`
+}
+
+func GetQuizeList() []Quize {
+	var quizzes []Quize
+
+	fb, _ := os.ReadFile("quize.csv")
+
+	_ = csvutil.Unmarshal(fb, &quizzes)
+
+	return quizzes
+}
+
+func QuizeSelect(index int) (Quize, error) {
+
+	var err error
+	quizzes := GetQuizeList()
+
+	if index >= len(quizzes) {
+		err = errors.New("Error:Unexpected index")
+	}
+	return quizzes[index], err
+
 }
