@@ -8,7 +8,7 @@ import (
 )
 
 type Quize struct {
-	Id      int    `csv:"id" json:"id"`
+	Id      int    `csv:"id" json:"-"`
 	Content string `csv:"que" json:"que"`
 	Answer  string `csv:"ans" json:"ans"`
 }
