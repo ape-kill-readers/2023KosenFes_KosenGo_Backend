@@ -1,0 +1,15 @@
+version: '3'
+services:
+  go:
+    container_name: Kosen_go_backend
+    build:
+      context: .
+      dockerfile: dockerfile
+    volumes:
+      - ./src:/go/src
+    
+    ports:
+      - 8080:8080
+    tty: true
+    environment:
+      - TZ=Asia/Tokyo
