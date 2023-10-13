@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"math/rand"
 	"time"
 
@@ -13,6 +14,8 @@ func QuizeFetch(ctx *gin.Context) {
 	index := rand.Intn(len(model.GetQuizeList()))
 
 	quize, err := model.QuizeSelect(index)
+
+	log.Println(ctx.Request.Header)
 
 	if err != nil {
 		ctx.Abort()
