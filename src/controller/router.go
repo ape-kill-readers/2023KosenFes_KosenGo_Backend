@@ -20,6 +20,7 @@ func Get() *gin.Engine {
 	}))
 
 	r.GET("/QuizeFetch", handler.QuizeFetch)
+	r.GET("/ClearQuizeProgress", handler.ClearQuizeProgress)
 
 	return r
 }
