@@ -8,21 +8,21 @@ import (
 	"github.com/yuha-yuha/2023KosenFes_KosenGo_Backend.git/model"
 )
 
-var quizzes []model.Quize
+var Quizzes []model.Quize
 
 func init() {
-	quizzes = model.GetQuizeList()
+	Quizzes = model.GetQuizeList()
 }
 
 func QuizeFetch(ctx *gin.Context) {
 	rand.Seed(time.Now().UnixNano())
-	index := rand.Intn(len(quizzes))
+	index := rand.Intn(len(Quizzes))
 
 	//quize, err := model.QuizeSelect(index)
-	quize, err := model.QuizePop(index, &quizzes)
+	quize, err := model.QuizePop(index, &Quizzes)
 
-	if len(quizzes) == 0 {
-		quizzes = model.GetQuizeList()
+	if len(Quizzes) == 0 {
+		Quizzes = model.GetQuizeList()
 	}
 	if err != nil {
 		ctx.Abort()
