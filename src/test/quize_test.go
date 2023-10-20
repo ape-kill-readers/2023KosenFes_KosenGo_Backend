@@ -7,7 +7,7 @@ import (
 )
 
 func TestPop(t *testing.T) {
-	quizzes := model.GetQuizeList()
+	quizzes := model.GetQuizeList("")
 	quizzesConfirm := quizzes
 
 	for _, quizeConfirm := range quizzesConfirm {

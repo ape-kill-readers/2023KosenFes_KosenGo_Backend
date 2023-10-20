@@ -13,17 +13,19 @@ type Quize struct {
 	Answer  string `csv:"ans" json:"ans"`
 }
 
-func GetQuizeList() []Quize {
+func GetQuizeList(mode string) []Quize {
 	var quizzes []Quize
 
-	fb, _ := os.ReadFile("quize.csv")
+	filename := "assets/" + mode + "Quize.csv"
+
+	fb, _ := os.ReadFile(filename)
 
 	_ = csvutil.Unmarshal(fb, &quizzes)
 
 	return quizzes
 }
 
-func QuizeSelect(index int) (Quize, error) {
+/*func QuizeSelect(index int) (Quize, error) {
 
 	var err error
 	quizzes := GetQuizeList()
@@ -33,7 +35,7 @@ func QuizeSelect(index int) (Quize, error) {
 	}
 	return quizzes[index], err
 
-}
+}*/
 
 func QuizePop(index int, quizzes *[]Quize) (Quize, error) {
 	var err error

@@ -6,6 +6,7 @@ import (
 )
 
 func ClearQuizeProgress(ctx *gin.Context) {
-	Quizzes = model.GetQuizeList()
+	mode := ctx.Query("mode")
+	Quizzes = model.GetQuizeList(mode)
 	ctx.Status(200)
 }

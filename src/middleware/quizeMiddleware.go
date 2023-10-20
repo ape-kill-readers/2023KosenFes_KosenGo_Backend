@@ -11,8 +11,8 @@ import (
 func IsQuizeListEmpty() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		if len(handler.Quizzes) == 0 {
-			//mode := ctx.Query("mode")
-			handler.Quizzes = model.GetQuizeList()
+			mode := ctx.Query("mode")
+			handler.Quizzes = model.GetQuizeList(mode)
 			log.Println("aaa")
 		}
 
@@ -21,8 +21,8 @@ func IsQuizeListEmpty() gin.HandlerFunc {
 		ctx.Next()
 
 		if len(handler.Quizzes) == 0 {
-			//mode := ctx.Query("mode")
-			handler.Quizzes = model.GetQuizeList()
+			mode := ctx.Query("mode")
+			handler.Quizzes = model.GetQuizeList(mode)
 			log.Println("bbb")
 		}
 
