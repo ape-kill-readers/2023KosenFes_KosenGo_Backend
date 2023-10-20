@@ -10,10 +10,6 @@ import (
 
 var Quizzes []model.Quize
 
-func init() {
-	Quizzes = model.GetQuizeList()
-}
-
 func QuizeFetch(ctx *gin.Context) {
 	rand.Seed(time.Now().UnixNano())
 	index := rand.Intn(len(Quizzes))
@@ -21,9 +17,6 @@ func QuizeFetch(ctx *gin.Context) {
 	//quize, err := model.QuizeSelect(index)
 	quize, err := model.QuizePop(index, &Quizzes)
 
-	if len(Quizzes) == 0 {
-		Quizzes = model.GetQuizeList()
-	}
 	if err != nil {
 		ctx.Abort()
 		panic(err)

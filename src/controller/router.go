@@ -4,6 +4,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	handler "github.com/yuha-yuha/2023KosenFes_KosenGo_Backend.git/controller/Handler"
+	"github.com/yuha-yuha/2023KosenFes_KosenGo_Backend.git/middleware"
 )
 
 func Get() *gin.Engine {
@@ -19,7 +20,7 @@ func Get() *gin.Engine {
 		},
 	}))
 
-	r.GET("/QuizeFetch", handler.QuizeFetch)
+	r.GET("/QuizeFetch", middleware.IsQuizeListEmpty(), handler.QuizeFetch)
 	r.GET("/ClearQuizeProgress", handler.ClearQuizeProgress)
 
 	return r
