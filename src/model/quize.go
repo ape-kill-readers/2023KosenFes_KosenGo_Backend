@@ -2,6 +2,7 @@ package model
 
 import (
 	"errors"
+	"log"
 	"os"
 
 	"github.com/jszwec/csvutil"
@@ -17,10 +18,13 @@ func GetQuizeList(mode string) []Quize {
 	var quizzes []Quize
 
 	filename := "assets/" + mode + "Quize.csv"
+	log.Println(mode)
 
 	fb, _ := os.ReadFile(filename)
 
 	_ = csvutil.Unmarshal(fb, &quizzes)
+
+	log.Println(mode)
 
 	return quizzes
 }
